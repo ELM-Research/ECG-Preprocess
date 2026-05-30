@@ -24,5 +24,8 @@ def build_map_dataset(args, logger):
     elif args.map == "ecg_comprehension":
         from ecg_datasets.map.ecg_comprehension import ECGComprehension
         map_dataset_builder = ECGComprehension(args, logger)
+    elif args.map == "ecg_qa_cot":
+        from ecg_datasets.map.ecg_qa_cot import ECGQACot
+        map_dataset_builder = ECGQACot(args, logger)
 
     map_dataset_builder.map_data()

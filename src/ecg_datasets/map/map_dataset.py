@@ -13,6 +13,8 @@ class MapDataset:
         data = self.get_map_data()
         for instance in tqdm(data, desc=f"Mapping {self.args.map}"):
             processed_instance = self.process_instance(instance)
+            if processed_instance is None:
+                continue
             ecg_path = processed_instance["ecg_path"]
             saved_dir = processed_instance["saved_dir"]
             for i in range(100):
