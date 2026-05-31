@@ -98,6 +98,12 @@ wget https://physionet.org/static/published-projects/challenge-2020/classificati
 
 3. Unzip the file and inside of `data/cpsc/classification-of-12-lead-ecgs-the-physionetcomputing-in-cardiology-challenge-2020-1.0.2/training` move the `cpsc_2018` and `cpsc_2018_extra` folders into the `data/cpsc` directory. Then delete the `classification-of-12-lead-ecgs-the-physionetcomputing-in-cardiology-challenge-2020-1.0.2` folder.
 
+#### EchoNext
+
+1. Create a `echonext` folder inside the `data` directory.
+
+2. Inside `data/echonext` download the [EchoNext](https://physionet.org/content/echonext/1.1.1/) data after receiving permission. The `data/echonext` folder should be populated with `.npy` files.
+
 ### Mapping Datasets
 
 Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to transform your custom dataset to a format compatbile for [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM). We provide several examples below as well as the ability to upload the mapped dataset to Huggingface. These are not required to do as we have already uploaded most datasets on Huggingface. Here are the currently supported datasets.
