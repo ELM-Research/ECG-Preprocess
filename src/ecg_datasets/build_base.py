@@ -18,6 +18,9 @@ def build_base_dataset(args, logger):
     elif args.base == "cpsc":
         from ecg_datasets.base.cpsc import CPSC
         base_dataset_builder = CPSC(args, logger)
+    elif args.base == "echonext":
+        from ecg_datasets.base.echonext import EchoNext
+        base_dataset_builder = EchoNext(args, logger)
 
     if ensure_directory_exists(file = f"{DATA_DIR}/{args.base}/{args.base}.csv"):
         logger.info("DF already exists")
