@@ -5,7 +5,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=0, help="Random Seed")
     parser.add_argument("--dev", action="store_true", default=None, help="Development mode")
     parser.add_argument("--base", type=str, default=None, 
-                        choices=["mimic_iv", "ptb_xl", "code15", "cpsc", "csn", "batch9", "batch10"],
+                        choices=["mimic_iv", "ptb_xl", "code15", "cpsc", "csn", "batch9", "batch10", "echonext"],
                         help="Base dataset to preprocess")
     parser.add_argument("--map", type=str, default=None,
                         choices=["pretrain_mimic", "ecg_grounding", "ecg_qa_mimic_iv",

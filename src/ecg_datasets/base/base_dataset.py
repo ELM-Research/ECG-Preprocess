@@ -74,7 +74,7 @@ class BaseDataset:
             sf = ecg_out["sf"]
             file_name = ecg_out["file_name"]
 
-            if self.args.base == "mimic_iv" or self.args.base == "code15":
+            if self.args.base in ("mimic_iv", "code15", "echonext"):
                 ecg = self.reorder_indices(ecg)
             
             if sf != self.args.target_sf:
