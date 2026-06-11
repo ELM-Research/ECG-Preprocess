@@ -104,6 +104,12 @@ wget https://physionet.org/static/published-projects/challenge-2020/classificati
 
 2. Inside `data/echonext` download the [EchoNext](https://physionet.org/content/echonext/1.1.1/) data after receiving permission. The `data/echonext` folder should be populated with `.npy` files.
 
+#### HEED
+
+1. Create a `heed` folder inside the `data` directory.
+
+2. Inside `data/heed` download the [HEED](https://bdsp.io/content/heedb/5.0/) data after receiving permission.
+
 ### Mapping Datasets
 
 Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to transform your custom dataset to a format compatbile for [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM). We provide several examples below as well as the ability to upload the mapped dataset to Huggingface. These are not required to do as we have already uploaded most datasets on Huggingface. Here are the currently supported datasets.

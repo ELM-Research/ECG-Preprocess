@@ -21,6 +21,10 @@ def build_base_dataset(args, logger):
     elif args.base == "echonext":
         from ecg_datasets.base.echonext import EchoNext
         base_dataset_builder = EchoNext(args, logger)
+    elif args.base == "heed":
+        from ecg_datasets.base.heed import HEED
+        base_dataset_builder = HEED(args, logger)
+
 
     if ensure_directory_exists(file = f"{DATA_DIR}/{args.base}/{args.base}.csv"):
         logger.info("DF already exists")
