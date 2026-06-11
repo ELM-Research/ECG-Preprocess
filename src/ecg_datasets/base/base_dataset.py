@@ -99,7 +99,9 @@ class BaseDataset:
                     "segment_len" : self.args.segment_len,
                     "npy_path" : save_path
                 }
-                
+                if "muse_report" in ecg_out:
+                    save_dic["muse_report"] = ecg_out["muse_report"]
+
                 np.save(save_path, save_dic)
             return True
         
