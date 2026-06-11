@@ -6,21 +6,21 @@ from configs.constants import DATA_DIR
 class HEED(BaseDataset):
     def __init__(self, args, logger):
         super().__init__(args, logger)
+        self.dx_dir = f"{DATA_DIR}/HEED/I0001/12SL_diagnoses"
+        dictionary = pd.read_csv(f"{self.dx_dir}/diagnoses_dictionary.csv")
+        self.code2dx = dict(zip(dictionary["codes"].astype(str), dictionary["diagnoses"]))
 
     def prepare_df(self,):
-        diagnoses_acquisition = pd.read_csv(f"{DATA_DIR}/HEED/I0001/12SL_diagnoses/diagnoses_acquisition.csv")
-        print(len(diagnoses_acquisition))
-        print(diagnoses_acquisition.head())
-        print(diagnoses_acquisition.columns)
-        print(diagnoses_acquisition["FileName"])
-        print(diagnoses_acquisition["codes_physician"])
-        print(diagnoses_acquisition["codes_software"])
-        diagnoses_dic = pd.read_csv(f"{DATA_DIR}/HEED/I0001/12SL_diagnoses/diagnoses_dictionary.csv")
-        print(len(diagnoses_dic))
-        print(diagnoses_dic.head())
-        print(diagnoses_dic.columns)
-        input("hihi")
-        pass
+        df = pd.read_csv(f"{self.dx_dir}/diagnoses_acquisition.csv")[["FileName", "codes_physician", "codes_software"]]
+        df.to_csv(f"{DATA_DIR}/{self.args.base}/{self.args.base}.csv", index=False)
 
-    def open_ecg(self, row):
-        pass
+    def map_codes(self, codes):
+        return list(dict.fromkeys(self.code2dx[c] for c in str(codes).split(",") if c in self.code2dx))
+
+    def open_ecg(self, row,):
+        file_path = f"{DATA_DIR}/HEED/I0001{row['FileName']}"
+        ecg, sf = self.open_wfdb(file_path)
+        return {"file_path": file_path, "ecg": ecg, "sf": sf,
+                "file_name": "_".join(row["FileName"].strip("/").split("/")),
+                "report": self.map_codes(row["codes_physician"]),
+                "muse_report": self.map_codes(row["codes_software"])}

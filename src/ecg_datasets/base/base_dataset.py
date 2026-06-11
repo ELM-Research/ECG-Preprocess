@@ -93,6 +93,7 @@ class BaseDataset:
                 save_dic = {
                     "ecg" : np.transpose(segmented_ecg[i], (1, 0)),
                     "report" : segmented_report[i],
+                    "muse_report" : ecg_out.get("muse_report"),
                     "ecg_path" : ecg_out["file_path"],
                     "original_sf" : sf,
                     "target_sf" : self.args.target_sf,
