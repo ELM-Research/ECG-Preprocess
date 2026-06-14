@@ -10,7 +10,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--map", type=str, default=None,
                         choices=["pretrain_mimic", "ecg_grounding", "ecg_qa_mimic_iv",
                                  "ecg_qa_ptb_xl", "ecg_instruct_45k", "ecg_bench_pulse",
-                                 "ecg_instruct_pulse", "ecg_protocol_gg_cot", "ecg_comprehension"],
+                                 "ecg_instruct_pulse", "ecg_protocol_gg_cot", "ecg_comprehension", "heed"],
                         help="External dataset to map to base dataset")
     parser.add_argument("--input_type", type=str, nargs="+", default = None)
     parser.add_argument("--per_len", type = int, default = None)

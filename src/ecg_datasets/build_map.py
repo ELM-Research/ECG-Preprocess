@@ -27,5 +27,8 @@ def build_map_dataset(args, logger):
     elif args.map == "ecg_qa_cot":
         from ecg_datasets.map.ecg_qa_cot import ECGQACot
         map_dataset_builder = ECGQACot(args, logger)
+    elif args.map == "heed":
+        from ecg_datasets.map.heed import HEED
+        map_dataset_builder = HEED(args)
 
     map_dataset_builder.map_data()
